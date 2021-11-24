@@ -8,11 +8,13 @@
 import UIKit
 import Alamofire
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, HomeView {
     
     
     @IBOutlet weak var tableView: UITableView!
     var items: Array<Post> = Array()
+    var presenter: HomePresenter!
+    
     
     
     override func viewDidLoad() {
@@ -25,62 +27,55 @@ class HomeViewController: BaseViewController {
     }
     
     
+    
+    
+    
     //MARK: - All of the Controller is controlling by (initViews)
     
     func initViews(){
         addNc()
         tableView.dataSource = self
         tableView.delegate = self
-        apiContactList()
-//        let post = Post(title: "Hello", body: "Salom")
-//        apiPostUpdate(post: post)
         
+        // MARK: - Calling Presenter()'s protocols
+        presenter = HomePresenter()
+        presenter.homeView = self
+        presenter.controller = self
+        presenter.apiPostList()
+        
+    }
+    
+    
+    
+    //MARK: - Protocols
+    
+    func onLoadPosts(posts: [Post]) {
+        if posts.count > 0 {
+            refreshTableView(post: posts)
+        }else{
+            // error Ooops
+        }
+    }
+    
+    func onLoadPostsDelete(deleted: Bool) {
+        if deleted {
+            presenter.apiPostList()
+        }else{
+            // error Ooops
+        }
     }
     
 
     
+    //MARK: - Refresh Table View
     
-    //MARK: - Calling API_LIST
-    
-    func refreshTableView(posts: [Post]){
-        self.items = posts
+    func refreshTableView(post: [Post]){
+        self.items = post
         self.tableView.reloadData()
+
     }
     
-    func apiContactList(){
-        showProgress()
-        
-        AFHttp.get(url: AFHttp.API_POST_LIST, params: AFHttp.paramsEmpty(), handler: { response in
-            self.hideProgress()
-            switch response.result {
-            case .success:
-                let contacts = try! JSONDecoder().decode([Post].self, from: response.data!)
-                self.refreshTableView(posts: contacts)
-            case let .failure(error):
-                print(error)
-            }
-        })
-    }
-    
-    
-    //MARK: - Calling API_DELETE
-    
-    func apiContactDelete(post: Post){
-        showProgress()
-        
-        AFHttp.del(url: AFHttp.API_POST_DELETE + post.id!, params: AFHttp.paramsEmpty(), handler: { response in
-            self.hideProgress()
-            switch response.result {
-            case .success:
-                print(response.result)
-                self.apiContactList()
-            case let .failure(error):
-                print(error)
-            }
-        })
-        
-    }
-    
+   
     
                                                     
     //MARK: - Navigation Controller
@@ -104,8 +99,9 @@ class HomeViewController: BaseViewController {
         
     }
     
-    func callEditViewController(){
+    func callEditViewController(post: Post){
         let vc = EditViewController(nibName: "EditViewController", bundle: nil)
+        vc.post = post
         let nc = UINavigationController(rootViewController: vc)
         self.present(nc, animated: true, completion: nil)
         
@@ -118,12 +114,10 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func leftTapped(){
-        apiContactList()
+        presenter.apiPostList()
     }
     
 }
-
-
 
 
 
@@ -166,7 +160,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
             print("Deleted")
             completion(true)
-            self.apiContactDelete(post: post)
+            self.presenter.apiPostDelete(post: post)
         }
     }
     
@@ -174,7 +168,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return UIContextualAction(style: .normal, title: "Edit") { (action, swipeButtonView, completion) in
             print("Completed")
             completion(true)
-            self.callEditViewController()
+            self.callEditViewController(post: post)
             
         }
     }

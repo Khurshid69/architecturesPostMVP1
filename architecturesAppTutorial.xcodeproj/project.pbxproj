@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B2F899223CEA7DABECF4E8AD /* Pods_architecturesAppTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC52463D934A5B06E63B55F0 /* Pods_architecturesAppTutorial.framework */; };
+		CE418AAB274ECD5300B8217A /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE418AAA274ECD5300B8217A /* CreateView.swift */; };
+		CE418AAD274ECD5F00B8217A /* CreatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE418AAC274ECD5F00B8217A /* CreatePresenter.swift */; };
+		CE418AB0274ECD8A00B8217A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE418AAF274ECD8A00B8217A /* EditView.swift */; };
+		CE418AB2274ECD9800B8217A /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE418AB1274ECD9800B8217A /* EditPresenter.swift */; };
+		CE4E84F3274E52AC00732F36 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E84F2274E52AC00732F36 /* HomeView.swift */; };
+		CE4E84F5274E52CA00732F36 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E84F4274E52CA00732F36 /* HomePresenter.swift */; };
 		CE5CF8F22748FAED0041AC2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CF8F12748FAED0041AC2D /* AppDelegate.swift */; };
 		CE5CF8F42748FAED0041AC2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CF8F32748FAED0041AC2D /* SceneDelegate.swift */; };
 		CE5CF8F92748FAED0041AC2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5CF8F72748FAED0041AC2D /* Main.storyboard */; };
@@ -29,6 +35,12 @@
 
 /* Begin PBXFileReference section */
 		CC52463D934A5B06E63B55F0 /* Pods_architecturesAppTutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architecturesAppTutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE418AAA274ECD5300B8217A /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		CE418AAC274ECD5F00B8217A /* CreatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePresenter.swift; sourceTree = "<group>"; };
+		CE418AAF274ECD8A00B8217A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		CE418AB1274ECD9800B8217A /* EditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
+		CE4E84F2274E52AC00732F36 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CE4E84F4274E52CA00732F36 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		CE5CF8EE2748FAED0041AC2D /* architecturesAppTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = architecturesAppTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5CF8F12748FAED0041AC2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5CF8F32748FAED0041AC2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +93,63 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CE418AA7274ECC4700B8217A /* edit */ = {
+			isa = PBXGroup;
+			children = (
+				CE418AAE274ECD7400B8217A /* presenter */,
+				CE5CF9112748FC060041AC2D /* EditViewController.swift */,
+				CE5CF9122748FC060041AC2D /* EditViewController.xib */,
+			);
+			path = edit;
+			sourceTree = "<group>";
+		};
+		CE418AA8274ECC5C00B8217A /* create */ = {
+			isa = PBXGroup;
+			children = (
+				CE418AA9274ECD3500B8217A /* presenter */,
+				CE5CF91B274906A90041AC2D /* CreateViewController.swift */,
+				CE5CF91C274906A90041AC2D /* CreateViewController.xib */,
+			);
+			path = create;
+			sourceTree = "<group>";
+		};
+		CE418AA9274ECD3500B8217A /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE418AAC274ECD5F00B8217A /* CreatePresenter.swift */,
+				CE418AAA274ECD5300B8217A /* CreateView.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		CE418AAE274ECD7400B8217A /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE418AB1274ECD9800B8217A /* EditPresenter.swift */,
+				CE418AAF274ECD8A00B8217A /* EditView.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
+		CE4E84F0274E526C00732F36 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E84F1274E527B00732F36 /* presenter */,
+				CE5CF9092748FB770041AC2D /* HomeViewController.swift */,
+				CE5CF90A2748FB770041AC2D /* HomeViewController.xib */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		CE4E84F1274E527B00732F36 /* presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE4E84F4274E52CA00732F36 /* HomePresenter.swift */,
+				CE4E84F2274E52AC00732F36 /* HomeView.swift */,
+			);
+			path = presenter;
+			sourceTree = "<group>";
+		};
 		CE5CF8E52748FAED0041AC2D = {
 			isa = PBXGroup;
 			children = (
@@ -118,12 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				CE5CF9192748FC920041AC2D /* BaseViewController.swift */,
-				CE5CF9092748FB770041AC2D /* HomeViewController.swift */,
-				CE5CF90A2748FB770041AC2D /* HomeViewController.xib */,
-				CE5CF9112748FC060041AC2D /* EditViewController.swift */,
-				CE5CF9122748FC060041AC2D /* EditViewController.xib */,
-				CE5CF91B274906A90041AC2D /* CreateViewController.swift */,
-				CE5CF91C274906A90041AC2D /* CreateViewController.xib */,
+				CE4E84F0274E526C00732F36 /* home */,
+				CE418AA8274ECC5C00B8217A /* create */,
+				CE418AA7274ECC4700B8217A /* edit */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -286,12 +352,18 @@
 				CEFD802C274A60B700B518F6 /* Network.swift in Sources */,
 				CE5CF91D274906A90041AC2D /* CreateViewController.swift in Sources */,
 				CE5CF90B2748FB770041AC2D /* HomeViewController.swift in Sources */,
+				CE4E84F5274E52CA00732F36 /* HomePresenter.swift in Sources */,
 				CE5CF8FC2748FAED0041AC2D /* architecturesAppTutorial.xcdatamodeld in Sources */,
 				CE5CF8F22748FAED0041AC2D /* AppDelegate.swift in Sources */,
+				CE4E84F3274E52AC00732F36 /* HomeView.swift in Sources */,
 				CE5CF8F42748FAED0041AC2D /* SceneDelegate.swift in Sources */,
+				CE418AAB274ECD5300B8217A /* CreateView.swift in Sources */,
 				CE5CF9182748FC6C0041AC2D /* Post.swift in Sources */,
 				CE82508F27493D5D00C6441D /* ContactTableViewCell.swift in Sources */,
+				CE418AB0274ECD8A00B8217A /* EditView.swift in Sources */,
+				CE418AB2274ECD9800B8217A /* EditPresenter.swift in Sources */,
 				CE5CF91A2748FC920041AC2D /* BaseViewController.swift in Sources */,
+				CE418AAD274ECD5F00B8217A /* CreatePresenter.swift in Sources */,
 				CE5CF9132748FC060041AC2D /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
