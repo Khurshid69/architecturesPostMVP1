@@ -1,0 +1,48 @@
+//
+//  BaseViewController.swift
+//  architecturesAppTutorial
+//
+//  Created by user on 20/11/21.
+//
+
+import UIKit
+import JGProgressHUD
+
+class BaseViewController: UIViewController {
+    
+    
+    let hud = JGProgressHUD()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    
+    }
+    
+    func appDelegete() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    func sceneDelegete() -> SceneDelegate {
+        return (((UIApplication.shared.connectedScenes.first?.delegate as?
+                  SceneDelegate)!
+                ))
+    }
+    
+    func showProgress(){
+        if !hud.isVisible {
+            hud.textLabel.text = "Loading"
+            hud.show(in: self.view)
+        }
+    }
+    func hideProgress(){
+        if hud.isVisible {
+            hud.dismiss()
+        }
+    }
+    
+
+   
+
+}
